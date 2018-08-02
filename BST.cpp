@@ -49,6 +49,17 @@ bst_node* insertNode(bst_node* root, int item){
 		 root->right=insertNode(root->right,item);
 	return root;
 }
+bst_node* search(bst_node* root, int key)
+{
+    if (root == NULL || root->data == key)
+       return root;
+    
+    if (root->data < key)
+       return search(root->right, key);
+ 
+    // Key is smaller than root's key
+    return search(root->left, key);
+}
 int main() {
 	bst_node *root = NULL;
     root = insertNode(root, 50);
@@ -66,6 +77,4 @@ int main() {
     postorder(root);
     cout<<endl;
 	return 0;
-
-
 }
